@@ -1,4 +1,4 @@
-# SETTINGS FOR BASH
+# Common BASH settings on all my machines
 1. GO to new machine's github folder. Create if it does not exist
 ```
 cd /home/jvsingh/work/github
@@ -6,15 +6,12 @@ cd /home/jvsingh/work/github
 
 2. Clone this repo
 ```
-git clone 
+git clone git@github.com:jaivrat/bash_utils.git
 
 ```
 
 
-
-# bash_utils
-Common Machine settings
-
+3. In your .bashrc, add these lines
 ```
 # Source all my utils from common utility I wrote for all machines
 # Source shared bash utilities if available
