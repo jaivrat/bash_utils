@@ -33,3 +33,11 @@ fi
 
 
 ```
+
+
+
+4. For tmux related
+
+```
+ln -s ~/work/github/bash_utils/.tmux.conf .tmux.conf
+```
