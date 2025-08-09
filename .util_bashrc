@@ -1,0 +1,70 @@
+# Common utilities for bash
+
+# To tar and gzip a folder
+targz() {
+  if [ -z "$1" ]; then
+    echo "Usage: targz folder_path"
+    return 1
+  fi
+  folder="$1"
+  base=$(basename "$folder")
+  dir=$(dirname "$folder")
+  tar -czf "${base}.tar.gz" -C "$dir" "$base"
+}
+
+
+tmux_commands() {
+
+ echo ''
+ echo '=====CREATION     ======='
+ echo 'tmux ls                  # Show all sessions'
+ echo 'tmux attach -t mysession   # Attach to my session'
+ echo 'tmux new -s mysession    #For new session'
+ echo 'tmux kill-ses -t mysession # KILL session'
+ echo 'tmux rename-session -t old_name new_name    # RENAME session'
+
+
+ echo ''
+
+
+ echo ''
+ echo '=====SPLIT WINDOWS======='
+ echo ':split-window -v'
+ echo ':ctrl+b %'
+ echo ':split-window -h'
+ echo ':ctrl+b "'
+ echo ':ctrl+b SPACEBAR     # Toggle between pane layouts'
+
+}
+
+tmux2w() {
+    # To create a tmux session with two windows
+    # One for main process and other for its log
+    local SESSION="$1"
+
+    if [ -z "$SESSION" ]; then
+        echo "Usage: tmux2w <session-name>"
+        return 1
+    fi
+
+    # Check if session exists
+    if tmux has-session -t "$SESSION" 2>/dev/null; then
+        echo "Error: Session '$SESSION' already exists."
+        return 1
+    fi
+
+    # Create the session with first pane running strat
+    tmux new-session -d -s "$SESSION" -n main
+    tmux send-keys -t "$SESSION:0.0" "strat" C-m
+
+    # Split horizontally (-h) for side-by-side; use -v for top/bottom
+    tmux split-window -h -t "$SESSION:0"
+    tmux send-keys -t "$SESSION:0.1" "cd ~/temp/logs" C-m
+
+    # Attach to the new session
+    tmux attach -t "$SESSION"
+}
+
+
+
+
