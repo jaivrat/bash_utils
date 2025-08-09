@@ -66,5 +66,28 @@ tmux2w() {
 }
 
 
+# How can i confgure my tmux, so that the Mac machine's terminal tab i am using 
+# changes the to the session name of tmux. Note that I am using terminal on my 
+# home machine, to connect to remote linux machine where i start tmux sessions
+# This is doable with some shell prompt magic and tmux config. Here’s the general approach:
+# Function to set terminal tab/window title
+function set_tmux_tab_title() {
+    # Only if inside tmux
+    if [ -n "$TMUX" ]; then
+        # Extract session name from TMUX environment variable or from tmux itself
+        # TMUX session name can be extracted with:
+        local session_name
+        session_name=$(tmux display-message -p '#S')
 
+        # Escape sequence to set title: \033]0;title\007
+        # This will tell your Mac terminal to set the tab/window title
+        echo -ne "\033]0;tmux:$session_name\007"
+    else
+        # Optional: set some default title when not in tmux
+        echo -ne "\033]0;bash\007"
+    fi
+}
+
+# Call this function every time prompt is shown
+PROMPT_COMMAND=set_tmux_tab_title
 
