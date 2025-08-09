@@ -4,6 +4,12 @@
 cd /home/jvsingh/work/github
 ```
 
+2. Clone this repo
+```
+git clone 
+
+```
+
 
 
 # bash_utils
