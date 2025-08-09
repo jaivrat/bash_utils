@@ -16,7 +16,7 @@ git clone git@github.com:jaivrat/bash_utils.git
 # Source all my utils from common utility I wrote for all machines
 # Source shared bash utilities if available
 # Auto-update utilities (optional, might slow login)
-GIT_BASH_UTILS="$HOME/work/github/bash-utils"
+GIT_BASH_UTILS="$HOME/work/github/bash_utils"
 UTIL_BASHRC="$GIT_BASH_UTILS/.util_bashrc"
 if [ -d $GIT_BASH_UTILS ]; then
     cd $GIT_BASH_UTILS && git pull --quiet ||  echo "Warning: Could not update $GIT_BASH_UTILS"
