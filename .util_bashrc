@@ -89,7 +89,7 @@ function set_tmux_tab_title() {
 }
 
 # Call this function every time prompt is shown
-# PROMPT_COMMAND=set_tmux_tab_title
+PROMPT_COMMAND=set_tmux_tab_title
 
 update_terminal_tab_title() {
   if [ -n "$TMUX" ]; then
