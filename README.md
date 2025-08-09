@@ -20,6 +20,8 @@ GIT_BASH_UTILS="$HOME/work/github/bash_utils"
 UTIL_BASHRC="$GIT_BASH_UTILS/.util_bashrc"
 if [ -d $GIT_BASH_UTILS ]; then
     cd $GIT_BASH_UTILS && git pull --quiet ||  echo "Warning: Could not update $GIT_BASH_UTILS"
+    # Back to home
+    cd $HOME
     if [ -f "$UTIL_BASHRC" ]; then
         source "$UTIL_BASHRC"
     else
@@ -28,4 +30,6 @@ if [ -d $GIT_BASH_UTILS ]; then
 else
     echo "Error : Your $GIT_BASH_UTILS directory not found!"
 fi
+
+
 ```
