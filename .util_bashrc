@@ -89,5 +89,20 @@ function set_tmux_tab_title() {
 }
 
 # Call this function every time prompt is shown
-PROMPT_COMMAND=set_tmux_tab_title
+# PROMPT_COMMAND=set_tmux_tab_title
+
+update_terminal_tab_title() {
+  if [ -n "$TMUX" ]; then
+    local session_name
+    session_name=$(tmux display-message -p '#S' 2>/dev/null)
+    if [ -n "$session_name" ]; then
+      echo -ne "\033]0;tmux:$session_name\007"
+    fi
+  else
+    # Optional: set a default title when not in tmux
+    echo -ne "\033]0;remote-shell\007"
+  fi
+}
+
+PROMPT_COMMAND="update_terminal_tab_title${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 
