@@ -1,5 +1,5 @@
 # Common BASH settings on all my machines
-1. GO to new machine's github folder. Create if it does not exist
+1. Go to new machine's github folder. Create if it does not exist
 ```
 cd /home/jvsingh/work/github
 ```
