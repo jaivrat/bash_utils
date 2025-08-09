@@ -67,15 +67,22 @@ tmux2w() {
 
 
 update_terminal_tab_title() {
+  local host env_name
+  host=$(hostname -s)              # short hostname
+  env_name=${MY_ENVIRONMENT:-}     # optional env var
+
   if [ -n "$TMUX" ]; then
     local session_name
     session_name=$(tmux display-message -p '#S' 2>/dev/null)
     if [ -n "$session_name" ]; then
-      echo -ne "\033]0;tmux:$session_name\007"
+      # Compose: tmux:session@hostname[env]
+      local title="tmux:${session_name}@${host}"
+      [ -n "$env_name" ] && title="${title}[${env_name}]"
+      echo -ne "\033]0;${title}\007"
     fi
   else
     # Optional: set a default title when not in tmux
-    echo -ne "\033]0;remote-shell\007"
+    echo -ne "\033]0;remote-shell@${host}\007"
   fi
 }
 
