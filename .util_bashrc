@@ -81,3 +81,19 @@ update_terminal_tab_title() {
 
 PROMPT_COMMAND="update_terminal_tab_title${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 
+# I want always to start a tmux session whenever I am opening a terminal
+# To “pre-warm” a tmux session in the background without actually attaching to it.
+# checks if main already exists. If it doesn’t, tmux new-session -d -s main creates
+# it detached (-d), so it runs in the background and you stay in your plain shell.
+# You can later attach to it manually with: tmux attach -t main
+# ~/.bashrc or ~/.bash_profile
+
+# If not inside tmux, ensure a 'main' session exists (detached)
+if [ -z "$TMUX" ]; then
+    tmux has-session -t main 2>/dev/null || tmux new-session -d -s main
+fi
+
+# If tmux.conf exists, source it (requires tmux server to be running)
+if [ -f "$HOME/.tmux.conf" ]; then
+    tmux source-file "$HOME/.tmux.conf"
+fi
