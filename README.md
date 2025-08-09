@@ -1,3 +1,11 @@
+# SETTINGS FOR BASH
+1. GO to new machine's github folder. Create if it does not exist
+```
+cd /home/jvsingh/work/github
+```
+
+
+
 # bash_utils
 Common Machine settings
 
