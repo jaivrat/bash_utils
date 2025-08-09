@@ -16,19 +16,19 @@ git clone git@github.com:jaivrat/bash_utils.git
 # Source all my utils from common utility I wrote for all machines
 # Source shared bash utilities if available
 # Auto-update utilities (optional, might slow login)
-GIT_BASH_UTILS="$HOME/work/github/bash_utils"
-UTIL_BASHRC="$GIT_BASH_UTILS/.util_bashrc"
-if [ -d $GIT_BASH_UTILS ]; then
-    cd $GIT_BASH_UTILS && git pull --quiet ||  echo "Warning: Could not update $GIT_BASH_UTILS"
+MY_GIT_BASH_UTILS="$HOME/work/github/bash_utils"
+MY_UTIL_BASHRC="$MY_GIT_BASH_UTILS/.util_bashrc"
+if [ -d $MY_GIT_BASH_UTILS ]; then
+    cd $MY_GIT_BASH_UTILS && git pull --quiet ||  echo "Warning: Could not update $MY_GIT_BASH_UTILS"
     # Back to home
     cd $HOME
-    if [ -f "$UTIL_BASHRC" ]; then
-        source "$UTIL_BASHRC"
+    if [ -f "$MY_UTIL_BASHRC" ]; then
+        source "$MY_UTIL_BASHRC"
     else
-        echo "Warning: $UTIL_BASHRC not found!"
+        echo "Warning: $MY_UTIL_BASHRC not found!"
     fi
 else
-    echo "Error : Your $GIT_BASH_UTILS directory not found!"
+    echo "Error : Your $MY_GIT_BASH_UTILS directory not found!"
 fi
 
 
