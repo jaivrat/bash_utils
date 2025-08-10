@@ -122,7 +122,7 @@ tmux_commands() {
  echo 'tmux new -s mysession                       # New session       OR ALIAS tmux_new'
  echo 'tmux kill-ses -t mysession                  # KILL session      OR ALIAS tmux_kill'
  echo 'tmux rename-session -t old_name new_name    # RENAME session    OR FUNC  tmux_rename'
-
+ echo 'tmux2w mysession                            # FUNCTION to CREATE split window as new SESSION'
 
  echo ''
 
