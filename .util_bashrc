@@ -111,6 +111,12 @@ alias tmux_attach='tmux attach -t'
 alias tmux_new='tmux new-session -s'
 alias tmux_list='tmux list-sessions'
 alias tmux_ls='tmux list-sessions'
+alias tmux-kill='tmux_kill'
+alias tmux-attach='tmux_attach'
+alias tmux-new='tmux_new'
+alias tmux-list='tmux_list'
+alias tmux-ls='tmux_ls'
+alias tmux-rename='tmux_rename'
 
 
 tmux_commands() {
