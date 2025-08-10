@@ -12,29 +12,28 @@ targz() {
   tar -czf "${base}.tar.gz" -C "$dir" "$base"
 }
 
-
-tmux_commands() {
-
- echo ''
- echo '=====CREATION     ======='
- echo 'tmux ls                  # Show all sessions'
- echo 'tmux attach -t mysession   # Attach to my session'
- echo 'tmux new -s mysession    #For new session'
- echo 'tmux kill-ses -t mysession # KILL session'
- echo 'tmux rename-session -t old_name new_name    # RENAME session'
-
-
- echo ''
-
-
- echo ''
- echo '=====SPLIT WINDOWS======='
- echo ':split-window -v'
- echo ':ctrl+b %'
- echo ':split-window -h'
- echo ':ctrl+b "'
- echo ':ctrl+b SPACEBAR     # Toggle between pane layouts'
-
+tmux_rename() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: tmux_rename <old_name> <new_name>"
+        echo "Example: tmux_rename old_session new_session"
+        return 1
+    fi
+    
+    local old_name="$1"
+    local new_name="$2"
+    
+    if tmux has-session -t "$old_name" 2>/dev/null; then
+        if tmux has-session -t "$new_name" 2>/dev/null; then
+            echo "Error: Session '$new_name' already exists"
+            return 1
+        else
+            echo "Renaming tmux session from '$old_name' to '$new_name'"
+            tmux rename-session -t "$old_name" "$new_name"
+        fi
+    else
+        echo "Error: Session '$old_name' not found"
+        return 1
+    fi
 }
 
 tmux2w() {
@@ -106,6 +105,33 @@ if [ -f "$HOME/.tmux.conf" ]; then
 fi
 
 
-# Or create a simple alias in your shell profile
+# Common aliases for tmux sessions
 alias tmux_kill='tmux kill-session -t'
+alias tmux_attach='tmux attach -t'
+alias tmux_new='tmux new-session -s'
+alias tmux_list='tmux list-sessions'
+alias tmux_ls='tmux list-sessions'
 
+
+tmux_commands() {
+
+ echo ''
+ echo '=====CREATION     ======='
+ echo 'tmux ls                                     # Show all sessions OR ALIAS tmux_ls tmux_list'
+ echo 'tmux attach -t mysession                    # Attach to session OR ALIAS tmux_attach'
+ echo 'tmux new -s mysession                       # New session       OR ALIAS tmux_new'
+ echo 'tmux kill-ses -t mysession                  # KILL session      OR ALIAS tmux_kill'
+ echo 'tmux rename-session -t old_name new_name    # RENAME session    OR FUNC  tmux_rename'
+
+
+ echo ''
+
+ echo ''
+ echo '=====SPLIT WINDOWS======='
+ echo ':split-window -v'
+ echo ':ctrl+b %'
+ echo ':split-window -h'
+ echo ':ctrl+b "'
+ echo ':ctrl+b SPACEBAR     # Toggle between pane layouts'
+
+}
