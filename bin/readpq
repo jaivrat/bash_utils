@@ -8,6 +8,7 @@ if len(sys.argv) != 2:
 
 first = True
 for batch in pq.ParquetFile(sys.argv[1]).iter_batches():
-    df = batch.to_pandas(index=False)
+    df = batch.to_pandas()  # no index param here
     df.to_csv(sys.stdout, index=False, header=first)
     first = False
+
