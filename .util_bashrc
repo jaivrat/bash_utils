@@ -1,5 +1,12 @@
 # Common utilities for bash
 
+# remote_execute jvsingh@hetzner "ls -lrt"
+remote_execute() {
+    local host="$1"
+    shift
+    ssh "$host" "$@"
+}
+
 # To tar and gzip a folder
 targz() {
   if [ -z "$1" ]; then
@@ -141,3 +148,9 @@ tmux_commands() {
  echo ':ctrl+b SPACEBAR     # Toggle between pane layouts'
 
 }
+
+# Other alias 
+alias rex="remote_execute "
+# example : rex jvsingh@hetzner_us "cd temp; ls -lrt"
+
+
