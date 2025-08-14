@@ -152,5 +152,5 @@ tmux_commands() {
 # Other alias 
 alias rex="remote_execute "
 # example : rex jvsingh@hetzner_us "cd temp; ls -lrt"
-
+alias readpq="$HOME/work/github/bash_utils/bin/readpq "
 
