@@ -151,6 +151,11 @@ tmux_commands() {
 
 # Other alias 
 alias rex="remote_execute "
+# US machine
+alias rex_us="remote_execute jvsingh@hetzner_us "
+# German machine
+alias rex_ge="remote_execute jvsingh@hetzner "
+
 # example : rex jvsingh@hetzner_us "cd temp; ls -lrt"
 alias readpq="$HOME/work/github/bash_utils/bin/readpq "
 
