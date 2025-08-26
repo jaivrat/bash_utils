@@ -158,4 +158,6 @@ alias rex_ge="remote_execute jvsingh@hetzner "
 
 # example : rex jvsingh@hetzner_us "cd temp; ls -lrt"
 alias readpq="$HOME/work/github/bash_utils/bin/readpq "
+alias rpq="$HOME/work/github/bash_utils/bin/readpq "
+
 
