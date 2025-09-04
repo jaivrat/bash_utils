@@ -162,3 +162,6 @@ alias rpq="$HOME/work/github/bash_utils/bin/readpq "
 
 # htop to consume less cpu
 alias htop='htop -d 20'
+# To see colours in logs always use -R
+alias less='less -R'
+
