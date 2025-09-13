@@ -115,6 +115,7 @@ fi
 # Common aliases for tmux sessions
 alias tmux_kill='tmux kill-session -t'
 alias tmux_attach='tmux attach -t'
+alias ta='tmux_attach'
 alias tmux_new='tmux new-session -s'
 alias tmux_list='tmux list-sessions'
 alias tmux_ls='tmux_list'
