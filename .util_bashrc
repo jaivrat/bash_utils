@@ -168,5 +168,5 @@ alias htop='htop -d 20'
 alias less='less -R'
 
 # List more than 5 days old 
-alias old5 ='find . -maxdepth 1 -type d -mtime +5'
+alias old5='find . -maxdepth 1 -type d -mtime +5'
 
