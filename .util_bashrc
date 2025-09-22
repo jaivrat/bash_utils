@@ -170,3 +170,14 @@ alias less='less -R'
 # List more than 5 days old 
 alias old5='find . -maxdepth 1 -type d -mtime +5'
 
+
+# 
+alias strat="cd $HOME/work/github/strategies/strat_research_01/scripts; source setup_scripts/set.sh"
+alias data="cd ~/work/github/strategies/data"
+alias strat_tflow="cd ~/work/github/ml_expts/tensorflow_expts; conda activate strat_tflow"
+alias keeprunning="caffeinate -dimsu"
+alias tws="open -n /Users/jvsingh/Applications/Trader\ Workstation/Trader\ Workstation.app"
+alias hetzner="ssh jvsingh@hetzner"
+alias hetzner_us="ssh jvsingh@hetzner_us"
+alias rex="remote_execute "
+
